@@ -54,6 +54,6 @@ def val(a,inter):
 
 def equi(a,b,interps):
    for i in interps:
-      if val(a,i)!=val(b,i)
+      if val(a,i)!=val(b,i):
           return False
    return True
