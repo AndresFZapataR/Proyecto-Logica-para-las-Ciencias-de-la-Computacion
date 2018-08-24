@@ -8,6 +8,15 @@ conectivos_binarios = ['O','Y','>']
 letras=["p","q","r"]
 interps = []
 aux = {}
+p=Tree('p',None,None)
+q=Tree('q',None,None)
+r=Tree('r',None,None)
+qor=Tree('O',q,r)
+poq=Tree('O',p,q)
+nop=Tree('-',None,p)
+noq=Tree('-',None,q)
+pyq=Tree('Y',p,q)
+pyr=Tree('Y',p,r)
 for a in letras:
 	aux[a]=1
      	interps.append(aux)
