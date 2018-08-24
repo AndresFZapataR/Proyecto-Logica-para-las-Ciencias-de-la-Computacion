@@ -4,7 +4,7 @@ class Tree(object):
     self.right = right
     self.label = label
 
-conectivos_binarios = ['O','Y','>',"<>"]
+conectivos_binarios = ['O','Y','>']
 letras=["p","q","r"]
 def genInterps():
   interps=[]
@@ -23,6 +23,7 @@ def genInterps():
                   aux1[b]=i[b]
       interps.append(aux1)
   print "interpretaciones"
+  return interps
   for i in interps:
     print i
     
@@ -30,22 +31,22 @@ def genInterps():
 def val(a,inter):
    if a.right==None:
        return inter[a.label]
-   if a.label=="~":
+   if a.label=='-':
        if val(a.right,inter)==1:
            return 0
        return 1
-   if a.label=="Y":
+   if a.label=='Y':
        if val(a.right,inter)==1 and val(a.left,inter)==1:
            return 1
        else:
            return 0
-   if a.label=="O":
+   if a.label=='O':
        if val(a.right,inter)==1:
            return 1
        if val(a.left,inter)==1:
            return 1
        return 0
-   if a.label==">":
+   if a.label=='>':
        if val(a.left,inter)==0:
            return 1
        return val(a.right,inter)
