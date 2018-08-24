@@ -71,3 +71,9 @@ def equi(a,b,interps):
       		if val(a,i)!=val(b,i):
           		return False
 	return True
+
+
+print equi(a1,a2,interps)
+print equi(b1,b2,interps)
+print equi(c1,c2,interps)
+print equi(d1,d2,interps)
