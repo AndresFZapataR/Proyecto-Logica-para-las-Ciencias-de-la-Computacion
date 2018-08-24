@@ -25,3 +25,34 @@ def genInterps():
   print "interpretaciones"
   for i in interps:
     print i
+    
+    
+def val(a,inter):
+   if a.right==None:
+       return inter[a.label]
+   if a.label=="~":
+       if val(a.right,inter)==1:
+           return 0
+       return 1
+   if a.label=="Y":
+       if val(a.right,inter)==1 and val(a.left,inter)==1:
+           return 1
+       else:
+           return 0
+   if a.label=="O":
+       if val(a.right,inter)==1:
+           return 1
+       if val(a.left,inter)==1:
+           return 1
+       return 0
+   if a.label==">":
+       if val(a.left,inter)==0:
+           return 1
+       return val(a.right,inter)
+
+
+def equi(a,b,interps):
+   for i in interps:
+      if val(a,i)!=val(b,i)
+          return False
+   return True
