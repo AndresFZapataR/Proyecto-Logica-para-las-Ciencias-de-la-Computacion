@@ -77,4 +77,8 @@ for i in interps:
 print "interpretaciones que hacen verdadera la formula: "
 for i in intertodotrue:
 	print i
+print equi(a1,a2,interps)
+print equi(b1,b2,interps)
+print equi(c1,c2,interps)
+print equi(d1,d2,interps)
 #
