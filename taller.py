@@ -19,6 +19,21 @@ nopq = Tree('-', None, pq)
 ros = Tree('O',r,s)
 nopqros = Tree('>',nopq,ros)
 formula = Tree('Y', nopqros,t)
+#arboles
+qor=Tree('O',q,r)
+poq=Tree('O',p,q)
+nop=Tree('-',None,p)
+noq=Tree('-',None,q)
+nor = Tree('-',None,r)
+pyq=Tree('Y',p,q)
+pyr=Tree('Y',p,r)
+a1=Tree('Y',p,qor)
+a2=Tree('O',pyq,pyr)
+c1=pyq
+c2=Tree('-',None,Tree('O',nop,noq))
+d1=Tree('>',p,q)
+d2=Tree('O',nop,q)
+
 
 for a in letras:
 	aux[a]=1
