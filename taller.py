@@ -29,12 +29,13 @@ pyq=Tree('Y',p,q)
 pyr=Tree('Y',p,r)
 a1=Tree('Y',p,qor)
 a2=Tree('O',pyq,pyr)
+b2 = Tree('-',None,Tree('Y',nop,noq))
 c1=pyq
 c2=Tree('-',None,Tree('O',nop,noq))
 d1=Tree('>',p,q)
 d2=Tree('O',nop,q)
 
-
+#genera todas las posibles interpretaciones 
 for a in letras:
 	aux[a]=1
 interps.append(aux)
@@ -52,8 +53,9 @@ for a in letras:
 print "interpretaciones"
 for i in interps:
     	print i
-    
-    
+#
+   
+#retorna el valor de verdad de una formula dada una interpretacion
 def val(a,inter):
    	if a.right==None:
        		return inter[a.label]
@@ -76,24 +78,27 @@ def val(a,inter):
        		if val(a.left,inter)==0:
            		return 1
        		return val(a.right,inter)
+#
 
-
+#evalua la eqivalencia entre formulas
 def equi(a,b,interps):
    	for i in interps:
       		if val(a,i)!=val(b,i):
           		return False
 	return True
+#
 
-intertodotrue = []
 
+intertodotrue = [] #lista de interpretaciones que hacen verdadera una formula
 for i in interps:
 	if val(formula, i):
 		intertodotrue.append(i)
 print "interpretaciones que hacen verdadera la formula: "
 for i in intertodotrue:
 	print i
+# resultados equivalencia ejercicio 5 del taller
 print equi(a1,a2,interps)
-print equi(b1,b2,interps)
+print equi(poq,b2,interps)
 print equi(c1,c2,interps)
 print equi(d1,d2,interps)
 #
