@@ -77,4 +77,4 @@ for i in interps:
 print "interpretaciones que hacen verdadera la formula: "
 for i in intertodotrue:
 	print i
-
+#
