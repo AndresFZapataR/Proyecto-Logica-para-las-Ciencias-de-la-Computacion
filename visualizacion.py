@@ -17,11 +17,11 @@
 # donde file.csv contiene los literales solucion separados por comas
 # y cada linea es una solucion diferente al mismo laberinto
 
-def dibujar_tablero(f,m, n):
+def dibujar_laberinto(inter,muros, n):
     # Visualiza laberinto dada una formula f
     # Input:
-    #   - f, una lista de baldosas
-    #   -m, una lista de muros
+    #   - f, una interpretacion
+    #   - m, una lista de muros
     #   - n, un numero de identificacion del archivo
     # Output:
     #   - archivo de imagen tablero_n.png
@@ -34,10 +34,10 @@ def dibujar_tablero(f,m, n):
     # Dibujo el laberinto
     step = 1./4
     tangulos = []
-    inicio_fin = ['13','4']
+    inicio_fin = ['a','p']
     # Creo las baldosas del laberinto
     tangulos.append(patches.Rectangle(*[(0,0), step, step],\
-            facecolor='cornsilk'))
+                            facecolor='cornsilk'))
     tangulos.append(patches.Rectangle(*[(step, 0), step, step],\
             facecolor='cornsilk'))
     tangulos.append(patches.Rectangle(*[(2 * step, 0), step, step],\
@@ -82,15 +82,16 @@ def dibujar_tablero(f,m, n):
     for t in tangulos:
         axes.add_patch(t)
 
-    # Modifico las baldosas que hacen parte del camino solucion
-    letras_numeros = {'a':13,'b':14,'c':15,'d':16,'e':9,'f':10,'g':11,'h':12,'i':5,'j':6,'k':7,'l':8,'m':1,'n':2,'o':3,'p':4}
-    for l in f:
-        if '-' not in l and l not in inicio_fin:
-            tangulos[letras_numeros[l]].set_facecolor("green")
+    letras_numeros = {'a':12,'b':13,'c':14,'d':15,'e':8,'f':9,'g':10,'h':11,'i':4,'j':5,'k':6,'l':7,'m':0,'n':1,'o':2,'p':3}
     #Coloco los muros
-    for l in f:
-        if '-' in l and l[1] in m:
-            tangulos[letras_numeros[l[1]] - 1 ].set_facecolor("black")
+    for i in muros:
+        tangulos[letras_numeros[i]].set_facecolor('black')
+
+    # Modifico las baldosas que hacen parte del camino solucion
+    for i in inter:
+        if inter[i]== True and i not in inicio_fin:
+            tangulos[letras_numeros[i]].set_facecolor('green')
+
     # Genero el Output
     fig.savefig("laberinto_" + str(n) + ".png")
 
